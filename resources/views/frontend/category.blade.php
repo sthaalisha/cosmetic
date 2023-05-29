@@ -1,7 +1,6 @@
 @extends('frontend.layout.header')
 @section('content')
 <div id="content">
-  
 
         <div class="container">
           <div class="row">
@@ -27,31 +26,18 @@
                   <ul class="nav nav-pills flex-column category-menu">
                     @foreach ($category as $categoryitem)
                     
-                   <li><a href="{{route('frontend.category')}}" class="nav-link">{{$categoryitem->name}} <span class="badge badge-secondary"></span></a>
+                   <li><a href="{{route('frontend.category', $categoryitem -> id)}}" class="nav-link">{{$categoryitem->name}} <span class="badge badge-secondary"></span></a>
                       <ul class="list-unstyled">
                       
                           
                         @foreach ($categoryitem->sub_category as $sub_category)
-                        <li><a href="{{route('frontend.category')}}" class="nav-link">{{$sub_category->name}}</a></li> 
+                        <li><a href="{{route('frontend.subcategory', $sub_category -> id)}}" class="nav-link">{{$sub_category->name}}</a></li> 
                           
                         @endforeach
-                        
-                        
-                       
-                        <!-- <li><a href="{{route('frontend.category')}}" class="nav-link">Shirts</a></li>
-                        <li><a href="{{route('frontend.category')}}" class="nav-link">Pants</a></li>
-                        <li><a href="{{route('frontend.category')}}" class="nav-link">Accessories</a></li> -->
-                        
+
                       </ul>
                     </li>
-                    <!-- <li><a href="{{route('frontend.category')}}" class="nav-link active">Ladies  <span class="badge badge-light">123</span></a>
-                      <ul class="list-unstyled">
-                        <li><a href="{{route('frontend.category')}}" class="nav-link">T-shirts</a></li>
-                        <li><a href="{{route('frontend.category')}}" class="nav-link">Skirts</a></li>
-                        <li><a href="{{route('frontend.category')}}" class="nav-link">Pants</a></li>
-                        <li><a href="{{route('frontend.category')}}" class="nav-link">Accessories</a></li>
-                      </ul>
-                    </li> -->
+
                     @endforeach
                     
                   </ul>
@@ -131,8 +117,8 @@
             </div>
             <div class="col-lg-9">
               <div class="box">
-                <h1>Ladies</h1>
-                <p>In our Ladies department we offer wide selection of the best products we have found and carefully selected worldwide.</p>
+                <h1>{{$current_category -> name}}</h1>
+                <p>In our {{$current_category -> name}} department we offer wide selection of the best products we have found and carefully selected worldwide.</p>
               </div>
               <div class="box info-bar">
                 <div class="row">
@@ -153,145 +139,31 @@
               </div>
               <div class="row products">
                 <div class="col-lg-4 col-md-6">
+                @foreach ($products as $product)
                   <div class="product">
                     <div class="flip-container">
                       <div class="flipper">
-                        <div class="front"><a href="detail.html"><img src="img/product1.jpg" alt="" class="img-fluid"></a></div>
-                        <div class="back"><a href="detail.html"><img src="img/product1_2.jpg" alt="" class="img-fluid"></a></div>
+                        <div class="front"><a href="detail.html"><img src="{{asset('images/products/'.$product->photopath)}}" alt="" class="img-fluid"></a></div>
+                        <div class="back"><a href="detail.html"><img src="{{asset('images/products/'.$product->photopath)}}" alt="" class="img-fluid"></a></div>
                       </div>
-                    </div><a href="detail.html" class="invisible"><img src="img/product1.jpg" alt="" class="img-fluid"></a>
+                    </div><a href="detail.html" class="invisible"><img src="{{asset('images/products/'.$product->photopath)}}" alt="" class="img-fluid"></a>
                     <div class="text">
-                      <h3><a href="detail.html">Fur coat with very but very very long name</a></h3>
+                      
+                          
+                      
+                      <h3><a href="detail.html">{{$product->name}}</a></h3>
                       <p class="price"> 
-                        <del></del>$143.00
+                        <del></del>Rs. {{$product->price}}
                       </p>
                       <p class="buttons"><a href="detail.html" class="btn btn-outline-secondary">View detail</a><a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a></p>
                     </div>
                     <!-- /.text-->
                   </div>
+
+                  @endforeach
                   <!-- /.product            -->
                 </div>
-                <div class="col-lg-4 col-md-6">
-                  <div class="product">
-                    <div class="flip-container">
-                      <div class="flipper">
-                        <div class="front"><a href="detail.html"><img src="img/product2.jpg" alt="" class="img-fluid"></a></div>
-                        <div class="back"><a href="detail.html"><img src="img/product2_2.jpg" alt="" class="img-fluid"></a></div>
-                      </div>
-                    </div><a href="detail.html" class="invisible"><img src="img/product2.jpg" alt="" class="img-fluid"></a>
-                    <div class="text">
-                      <h3><a href="detail.html">White Blouse Armani</a></h3>
-                      <p class="price"> 
-                        <del>$280</del>$143.00
-                      </p>
-                      <p class="buttons"><a href="detail.html" class="btn btn-outline-secondary">View detail</a><a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a></p>
-                    </div>
-                    <!-- /.text-->
-                    <div class="ribbon sale">
-                      <div class="theribbon">SALE</div>
-                      <div class="ribbon-background"></div>
-                    </div>
-                    <!-- /.ribbon-->
-                    <div class="ribbon new">
-                      <div class="theribbon">NEW</div>
-                      <div class="ribbon-background"></div>
-                    </div>
-                    <!-- /.ribbon-->
-                    <div class="ribbon gift">
-                      <div class="theribbon">GIFT</div>
-                      <div class="ribbon-background"></div>
-                    </div>
-                    <!-- /.ribbon-->
-                  </div>
-                  <!-- /.product            -->
-                </div>
-                <div class="col-lg-4 col-md-6">
-                  <div class="product">
-                    <div class="flip-container">
-                      <div class="flipper">
-                        <div class="front"><a href="detail.html"><img src="img/product3.jpg" alt="" class="img-fluid"></a></div>
-                        <div class="back"><a href="detail.html"><img src="img/product3_2.jpg" alt="" class="img-fluid"></a></div>
-                      </div>
-                    </div><a href="detail.html" class="invisible"><img src="img/product3.jpg" alt="" class="img-fluid"></a>
-                    <div class="text">
-                      <h3><a href="detail.html">Black Blouse Versace</a></h3>
-                      <p class="price"> 
-                        <del></del>$143.00
-                      </p>
-                      <p class="buttons"><a href="detail.html" class="btn btn-outline-secondary">View detail</a><a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a></p>
-                    </div>
-                    <!-- /.text-->
-                  </div>
-                  <!-- /.product            -->
-                </div>
-                <div class="col-lg-4 col-md-6">
-                  <div class="product">
-                    <div class="flip-container">
-                      <div class="flipper">
-                        <div class="front"><a href="detail.html"><img src="img/product3.jpg" alt="" class="img-fluid"></a></div>
-                        <div class="back"><a href="detail.html"><img src="img/product3_2.jpg" alt="" class="img-fluid"></a></div>
-                      </div>
-                    </div><a href="detail.html" class="invisible"><img src="img/product3.jpg" alt="" class="img-fluid"></a>
-                    <div class="text">
-                      <h3><a href="detail.html">Black Blouse Versace</a></h3>
-                      <p class="price"> 
-                        <del></del>$143.00
-                      </p>
-                      <p class="buttons"><a href="detail.html" class="btn btn-outline-secondary">View detail</a><a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a></p>
-                    </div>
-                    <!-- /.text-->
-                  </div>
-                  <!-- /.product            -->
-                </div>
-                <div class="col-lg-4 col-md-6">
-                  <div class="product">
-                    <div class="flip-container">
-                      <div class="flipper">
-                        <div class="front"><a href="detail.html"><img src="img/product2.jpg" alt="" class="img-fluid"></a></div>
-                        <div class="back"><a href="detail.html"><img src="img/product2_2.jpg" alt="" class="img-fluid"></a></div>
-                      </div>
-                    </div><a href="detail.html" class="invisible"><img src="img/product2.jpg" alt="" class="img-fluid"></a>
-                    <div class="text">
-                      <h3><a href="detail.html">White Blouse Versace</a></h3>
-                      <p class="price"> 
-                        <del></del>$143.00
-                      </p>
-                      <p class="buttons"><a href="detail.html" class="btn btn-outline-secondary">View detail</a><a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a></p>
-                    </div>
-                    <!-- /.text-->
-                    <div class="ribbon new">
-                      <div class="theribbon">NEW</div>
-                      <div class="ribbon-background"></div>
-                    </div>
-                    <!-- /.ribbon-->
-                  </div>
-                  <!-- /.product            -->
-                </div>
-                <div class="col-lg-4 col-md-6">
-                  <div class="product">
-                    <div class="flip-container">
-                      <div class="flipper">
-                        <div class="front"><a href="detail.html"><img src="img/product1.jpg" alt="" class="img-fluid"></a></div>
-                        <div class="back"><a href="detail.html"><img src="img/product1_2.jpg" alt="" class="img-fluid"></a></div>
-                      </div>
-                    </div><a href="detail.html" class="invisible"><img src="img/product1.jpg" alt="" class="img-fluid"></a>
-                    <div class="text">
-                      <h3><a href="detail.html">Fur coat</a></h3>
-                      <p class="price"> 
-                        <del></del>$143.00
-                      </p>
-                      <p class="buttons"><a href="detail.html" class="btn btn-outline-secondary">View detail</a><a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a></p>
-                    </div>
-                    <!-- /.text-->
-                    <div class="ribbon gift">
-                      <div class="theribbon">GIFT</div>
-                      <div class="ribbon-background"></div>
-                    </div>
-                    <!-- /.ribbon-->
-                  </div>
-                  <!-- /.product            -->
-                </div>
-                <!-- /.products-->
+                
               </div>
               <div class="pages">
                 <p class="loadMore"><a href="#" class="btn btn-primary btn-lg"><i class="fa fa-chevron-down"></i> Load more</a></p>

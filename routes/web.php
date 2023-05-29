@@ -24,7 +24,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[PageController::class,'home'])->name('home');
 
 //frontendCategory
-Route::get('/categories',[PageController::class,'frontendcategory'])->name('frontend.category');
+Route::get('/categories/{category}',[PageController::class,'frontendcategory'])->name('frontend.category');
+Route::get('/subcategories/{subcategory}',[PageController::class,'frontendcategory'])->name('frontend.subcategory');
 
 
 
