@@ -19,4 +19,9 @@ class Product extends Model
     {
         return $this->belongsTo(Brand::class);
     }
+
+    public function sub_category()
+    {
+        return $this->belongsTo(Sub_Category::class);
+    }
 }

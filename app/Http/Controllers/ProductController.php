@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Sub_Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -23,7 +24,8 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $brands = Brand::all();
-        return view('product.create',compact('categories','brands'));
+        $sub_categories= Sub_Category::all();
+        return view('product.create',compact('categories','brands','sub_categories'));
     }
 
     /**
@@ -34,6 +36,7 @@ class ProductController extends Controller
         $data = $request->validate([
             'brand_id' =>'required',
             'category_id' =>'required',
+            'sub_category-id' => 'required',
             'name' =>'required',
             'price' => 'numeric|required',
             'stock' => 'numeric|required',
@@ -69,7 +72,8 @@ class ProductController extends Controller
         $product = Product::Find($id);
         $brands = Brand::all();
         $categories = Category::all();
-        return view('product.edit',compact('product','categories','brands'));
+        $sub_categories = Sub_Category::all();
+        return view('product.edit',compact('product','categories','brands','sub_categories'));
     }
 
     /**
@@ -81,6 +85,7 @@ class ProductController extends Controller
         $data = $request->validate(([
             'brand_id' =>'required',
             'category_id' =>'required',
+            'sub_category_id' =>'required',
             'name' =>'required',
             'price' => 'numeric|required',
             'stock' => 'numeric|required',

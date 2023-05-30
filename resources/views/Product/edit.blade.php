@@ -22,6 +22,14 @@
             @endforeach
         </select>
 
+        <select name="sub_category_id" id="" class="w-full rounded-lg border-gray-300 my-2">
+            @foreach($sub_categories as $sub_category)
+            <option value="{{$category->id}}"@if ($product->category_id ==$category->id) selected
+                
+            @endif>{{$sub_category->name}}</option>
+            @endforeach
+        </select>
+
         <input type="text" placeholder="Product Name" name="name" class="w-full rounded-lg border-gray-300 my-2" value="{{$product->name}}">
         @error('name')
             <p class="text-red-600 text-xs -mt-2">{{$message}}</p>

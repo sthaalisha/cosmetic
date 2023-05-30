@@ -75,7 +75,7 @@
                   </form>
                 </div>
               </div>
-              <div class="card sidebar-menu mb-4">
+              <!-- <div class="card sidebar-menu mb-4">
                 <div class="card-header">
                   <h3 class="h4 card-title">Colours <a href="#" class="btn btn-sm btn-danger pull-right"><i class="fa fa-times-circle"></i> Clear</a></h3>
                 </div>
@@ -111,7 +111,7 @@
                     <button class="btn btn-default btn-sm btn-primary"><i class="fa fa-pencil"></i> Apply</button>
                   </form>
                 </div>
-              </div>
+              </div> -->
               <!-- *** MENUS AND FILTERS END ***-->
               <div class="banner"><a href="#"><img src="img/banner.jpg" alt="sales 2014" class="img-fluid"></a></div>
             </div>
@@ -137,6 +137,7 @@
                   </div>
                 </div>
               </div>
+              
               <div class="row products">
                 <div class="col-lg-4 col-md-6">
                 @foreach ($products as $product)
@@ -146,7 +147,8 @@
                         <div class="front"><a href="detail.html"><img src="{{asset('images/products/'.$product->photopath)}}" alt="" class="img-fluid"></a></div>
                         <div class="back"><a href="detail.html"><img src="{{asset('images/products/'.$product->photopath)}}" alt="" class="img-fluid"></a></div>
                       </div>
-                    </div><a href="detail.html" class="invisible"><img src="{{asset('images/products/'.$product->photopath)}}" alt="" class="img-fluid"></a>
+                    </div>
+                    <a href="detail.html" class="invisible"><img src="{{asset('images/products/'.$product->photopath)}}" alt="" class="img-fluid"></a>
                     <div class="text">
                       
                           
@@ -159,12 +161,14 @@
                     </div>
                     <!-- /.text-->
                   </div>
+                
 
                   @endforeach
+                  </div>
                   <!-- /.product            -->
                 </div>
                 
-              </div>
+              
               <div class="pages">
                 <p class="loadMore"><a href="#" class="btn btn-primary btn-lg"><i class="fa fa-chevron-down"></i> Load more</a></p>
                 <nav aria-label="Page navigation example" class="d-flex justify-content-center">

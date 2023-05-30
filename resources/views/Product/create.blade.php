@@ -21,6 +21,14 @@
             @endforeach
         </select>
 
+        <select name="category_id" id="" class="w-full rounded-lg border-gray-300 my-2">
+            <option selected disabled>Select Sub-Category</option>
+            @foreach($sub_categories as $sub_category)
+            <option value="{{$sub_category->id}}">{{$sub_category->name}}</option>
+            @endforeach
+        </select>
+
+
         <input type="text" placeholder="Product Name" name="name" class="w-full rounded-lg border-gray-300 my-2" value="{{old('name')}}">
         @error('name')
             <p class="text-red-600 text-xs -mt-2">{{$message}}</p>
