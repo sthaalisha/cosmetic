@@ -21,7 +21,7 @@
             @endforeach
         </select>
 
-        <select name="category_id" id="" class="w-full rounded-lg border-gray-300 my-2">
+        <select name="sub__category_id" id="" class="w-full rounded-lg border-gray-300 my-2">
             <option selected disabled>Select Sub-Category</option>
             @foreach($sub_categories as $sub_category)
             <option value="{{$sub_category->id}}">{{$sub_category->name}}</option>

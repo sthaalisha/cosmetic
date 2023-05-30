@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('description');
             $table->foreignId('category_id')->constrained();
             $table->foreignId('brand_id')->constrained();
-
+            $table->foreignId('sub__category_id')->constrained();
             $table->timestamps();
         });
     }

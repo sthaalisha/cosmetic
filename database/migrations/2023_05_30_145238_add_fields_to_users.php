@@ -15,8 +15,6 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
             $table->string('role')->default('user')->nullable();
-            
-            
         });
     }
 
@@ -25,10 +23,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) 
-        {
-                $table->dropColumn(['address', 'phone', 'role']);
-        
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn(['address', 'phone', 'role']);
         });
     }
 };

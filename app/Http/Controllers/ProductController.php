@@ -33,10 +33,11 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        
         $data = $request->validate([
             'brand_id' =>'required',
             'category_id' =>'required',
-            'sub_category-id' => 'required',
+            'sub__category_id' => 'required',
             'name' =>'required',
             'price' => 'numeric|required',
             'stock' => 'numeric|required',
@@ -85,7 +86,7 @@ class ProductController extends Controller
         $data = $request->validate(([
             'brand_id' =>'required',
             'category_id' =>'required',
-            'sub_category_id' =>'required',
+            'sub__category_id' =>'required',
             'name' =>'required',
             'price' => 'numeric|required',
             'stock' => 'numeric|required',
