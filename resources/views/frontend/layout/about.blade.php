@@ -1,17 +1,28 @@
 @extends('frontend.layout.header')
-
-
+<style>
+    .item {
+        margin-left: 100px;
+        margin-right: 200p;
+        margin-bottom: 50px;
+        
+    }
+</style>
 @section('content')
-<h1 class="font-bold text-4xl text-blue-700 ">About The Cosmetics Company Store</h1>
 
-As part of This store<br> we offer award winning premium skincare, makeup, haircare, and fragrance products from a collection of prestigious brands including Estee Lauder, Clinique, & MAC.<br>
-<div class="item"><img src="{{asset('frontend/img/main-slider1.jpg')}}"></div>
+<div class="item">
+<h1 class="font-bold text-4xl text-blue-700 ">Get to know us!</h1>
 
-<h1 class="font-bold text-4xl text-blue-700">About Localised</h1>
-Localised offers international ecommerce services to globally coveted fashion and lifestyle brands and retailers.<br> We design, localize, operate, optimize, host and market country-specific international sites on behalf of these brands and retailers.<br> To learn more, visit our corporate website at: www.localised.com.
-<P1 class="font-bold text-4xl text-blue-700">This website is operated by Localised, as authorized by The Cosmetics Company Store. Any orders you make via this website would be an offer by you to purchase products from Localised Inc..</P1>
-
-Localised Inc.
-1460 Broadway, New York, NY 10036, USA
+As part of This store<br> we offer award winning premium skincare, makeup, haircare, and fragrance products from a collection of prestigious brands including Estee Lauder, Clinique, & MAC.<br> <br><br>
+<img src="{{asset('frontend/img/slide51.png')}}">
+<h1 class=" ">What's so unique about Cosmetics and Skincare?</h1>
+As the seller of Cosmetics and Skincare, I am excited to bring people around the world the best products that are proven to heal and improve younger-looking skin.<br>
+For women - the importance of your skincare is perfect-looking makeup. Without proper skincare, you cannot achieve your ultimate application of cosmetics to bring out your natural beauty.<br>
+For men - the importance of your skincare is vital to keeping your skin healthy, clean, and youthful.<br>
+Many of our products are Gluten Free, Paraben Free, Vegan, and E.U.
+ Registered. They are made with only the highest quality ingredients and under the highest standards.
+ <br> Our products are also cruelty free - we never test on animals. They are enriched and infused with crucial vitamins and minerals such as Vitamin A, C, and E. 
+The importances of these vitamins are to exfoliate, hydrate, brighten, and heal.<br>
+Citro Cosmetics & Skincare believes that using these products will deliver you the results that you have been searching for.
+</div>
 
     @endsection

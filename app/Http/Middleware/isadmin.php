@@ -21,7 +21,7 @@ class isadmin
         }
         else
         {
-            return redirect('/dashboard')->with('success','You have not admin access');
+            return redirect('/');
         }
     }
 }

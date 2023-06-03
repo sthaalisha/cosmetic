@@ -1,5 +1,10 @@
 @extends('layouts.app')
 @section('content')
+@if($errors->any())
+@foreach($errors->all() as $error)
+{{$error}}
+@endforeach
+@endif
     <h2 class="font-bold text-4xl text-blue-700">Edit Product</h2> 
     <hr class="h-1 bg-blue-200">
 
@@ -22,9 +27,9 @@
             @endforeach
         </select>
 
-        <select name="sub_category_id" id="" class="w-full rounded-lg border-gray-300 my-2">
+        <select name="sub__category_id" id="" class="w-full rounded-lg border-gray-300 my-2">
             @foreach($sub_categories as $sub_category)
-            <option value="{{$category->id}}"@if ($product->category_id ==$category->id) selected
+            <option value="{{$sub_category->id}}"@if ($product->category_id ==$category->id) selected
                 
             @endif>{{$sub_category->name}}</option>
             @endforeach

@@ -2,6 +2,25 @@
 <html>
 
 <head>
+<style>
+    .navbar-nav {
+        background-color: #f0f0f1;
+        text-decoration-color: black; 
+    }
+
+    .navbar-nav li {
+        margin-right: 10px; 
+    }
+
+    .navbar-nav li a {
+        color: #000000; 
+        font-weight: bold;
+    }
+
+    .product .item{
+        width: 200px;
+    }
+</style>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Cosmetic_Store</title>
@@ -27,7 +46,12 @@
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+
+
+
+
 </head>
+
 
 <body>
     <!-- navbar-->
@@ -37,23 +61,33 @@
       _________________________________________________________
       -->
         <div id="top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">Offer of
-                            the day</a><a href="#" class="ml-1">Get flat 35% off on orders over $50!</a></div>
-                    <div class="col-lg-6 text-center text-lg-right">
-                        <ul class="menu list-inline mb-0">
-                            <li class="list-inline-item"><a href="{{ route('frontend.about') }}">About us</a></li>
-                            <li class="list-inline-item"><a href="#" data-toggle="modal"
-                                    data-target="#login-modal">Login</a></li>
-                            <li class="list-inline-item"><a href="{{ route('frontend.register') }}">Register</a></li>
-                            <li class="list-inline-item"><a href="{{ route('frontend.contact') }}">Contact</a></li>
-                            <!-- <li class="list-inline-item"><a href="#">Recently viewed</a></li> -->
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true"
+        <div class="container">
+    <div class="row">
+        <div class="col-lg-6 offer mb-3 mb-lg-0">
+            <a href="#" class="btn btn-success btn-sm">Offer of the day</a>
+            <a href="#" class="ml-1">Get flat 35% off on orders over 5000 purchase!</a>
+        </div>
+        <div class="col-lg-6 text-center text-lg-right">
+            <ul class="menu list-inline mb-0">
+                @if(auth()->user())
+                    <li>
+                        <a href="">{{auth()->user()->name}}</a>
+                        <form class="inline text-white" action="{{route('logout')}}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-link"><i class="fa fa-sign-out"></i></button>
+                        </form>
+                    </li>
+                @else
+                    <li class="list-inline-item"><a href="{{route('frontend.userlogin')}}">Login</a></li>
+                    <li class="list-inline-item"><a href="{{route('frontend.register')}}">Register</a></li>
+                @endif
+                <!-- <li class="list-inline-item"><a href="#">Recently viewed</a></li> -->
+            </ul>
+        </div>
+    </div>
+</div>
+
+            <!-- <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true"
                 class="modal fade">
                 <div class="modal-dialog modal-sm">
                     <div class="modal-content">
@@ -63,12 +97,12 @@
                                     aria-hidden="true">×</span></button>
                         </div>
                         <div class="modal-body">
-                            <form action="customer-orders.html" method="post">
+                            <form action="{{route('login')}}" method="POST">
                                 <div class="form-group">
-                                    <input id="email-modal" type="text" placeholder="email" class="form-control">
+                                    <input id="email" type="email" placeholder="email" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <input id="password-modal" type="password" placeholder="password"
+                                    <input id="password" type="password" placeholder="password"
                                         class="form-control">
                                 </div>
                                 <p class="text-center">
@@ -82,16 +116,17 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- *** TOP BAR END ***-->
+            
 
 
         </div>
         <nav class="navbar navbar-expand-lg">
             <div class="container"><a href="{{ route('home') }}" class="navbar-brand home"><img
-                        src="{{ asset('frontend/img/logo.png') }}" alt="Obaju logo"
-                        class="d-none d-md-inline-block"><img src="{{ asset('frontend/img/logo-small.png') }}"
-                        alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to
+                        src="{{ asset('frontend/img/logo20.png') }}" alt=" logo"
+                        class="d-none d-md-inline-block"><img src="{{ asset('frontend/img/logo20.png') }}"
+                        alt="logo" class="d-inline-block d-md-none"><span class="sr-only">logo - go to
                         homepage</span></a>
                 <div class="navbar-buttons">
                     <button type="button" data-toggle="collapse" data-target="#navigation"
@@ -104,61 +139,16 @@
                 </div>
                 <div id="navigation" class="collapse navbar-collapse">
                     <ul class="navbar-nav mr-auto">
-                      <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                       <li class="nav-item" ><a href="/" class="nav-link">Home</a></li>
+                      
+                      <li class="nav-item"><a href="{{route('frontend.layout.about')}}" class="nav-link">About Us</a></li>
                         @foreach ($category as $categoryitem)
                             <li class="nav-item"><a href="/categories/{{$categoryitem -> id}}" class="nav-link">{{$categoryitem -> name}}</a></li>
                         @endforeach
 
-                <!-- <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link">Template<b class="caret"></b></a>
-                <ul class="dropdown-menu megamenu"> -->
-                <!-- <li>
-                    <div class="row">
-                      <div class="col-md-6 col-lg-3">
-                        <h5>Shop</h5>
-                        <ul class="list-unstyled mb-3">
-                          <li class="nav-item"><a href="index.html" class="nav-link">Homepage</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Category - sidebar left</a></li>
-                          <li class="nav-item"><a href="category-right.html" class="nav-link">Category - sidebar right</a></li>
-                          <li class="nav-item"><a href="category-full.html" class="nav-link">Category - full width</a></li>
-                          <li class="nav-item"><a href="detail.html" class="nav-link">Product detail</a></li>
-                        </ul>
-                      </div>
-                      <div class="col-md-6 col-lg-3">
-                        <h5>User</h5>
-                        <ul class="list-unstyled mb-3">
-                          <li class="nav-item"><a href="register.html" class="nav-link">Register / login</a></li>
-                          <li class="nav-item"><a href="customer-orders.html" class="nav-link">Orders history</a></li>
-                          <li class="nav-item"><a href="customer-order.html" class="nav-link">Order history detail</a></li>
-                          <li class="nav-item"><a href="customer-wishlist.html" class="nav-link">Wishlist</a></li>
-                          <li class="nav-item"><a href="customer-account.html" class="nav-link">Customer account / change password</a></li>
-                        </ul>
-                      </div>
-                      <div class="col-md-6 col-lg-3">
-                        <h5>Order process</h5>
-                        <ul class="list-unstyled mb-3">
-                          <li class="nav-item"><a href="basket.html" class="nav-link">Shopping cart</a></li>
-                          <li class="nav-item"><a href="checkout1.html" class="nav-link">Checkout - step 1</a></li>
-                          <li class="nav-item"><a href="checkout2.html" class="nav-link">Checkout - step 2</a></li>
-                          <li class="nav-item"><a href="checkout3.html" class="nav-link">Checkout - step 3</a></li>
-                          <li class="nav-item"><a href="checkout4.html" class="nav-link">Checkout - step 4</a></li>
-                        </ul>
-                      </div>
-                      <div class="col-md-6 col-lg-3">
-                        <h5>Pages and blog</h5>
-                        <ul class="list-unstyled mb-3">
-                          <li class="nav-item"><a href="blog.html" class="nav-link">Blog listing</a></li>
-                          <li class="nav-item"><a href="post.html" class="nav-link">Blog Post</a></li>
-                          <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
-                          <li class="nav-item"><a href="text.html" class="nav-link">Text page</a></li>
-                          <li class="nav-item"><a href="text-right.html" class="nav-link">Text page - right sidebar</a></li>
-                          <li class="nav-item"><a href="404.html" class="nav-link">404 page</a></li>
-                          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-             </li> -->
+                        <li class="nav-item"><a href="{{route('frontend.contact')}}" class="nav-link">Contact Us</a></li>
+
+                
                 </ul>
                 <div class="navbar-buttons d-flex justify-content-end">
                     <!-- /.nav-collapse-->
@@ -193,13 +183,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 mb-2 mb-lg-0">
-                    <p class="text-center text-lg-left">©2019 Your name goes here.</p>
+                    <p class="text-center text-lg-left">©About our store</p>
                 </div>
                 <div class="col-lg-6">
-                    <p class="text-center text-lg-right">Template design by <a
-                            href="https://bootstrapious.com/">Bootstrapious</a>
+                    <p class="text-center text-lg-right">Cosmetic store </p>
+                    <!-- <a -->
+                            <!-- href="https://bootstrapious.com/">Bootstrapious</a> -->
                         <!-- If you want to remove this backlink, pls purchase an Attribution-free License @ https://bootstrapious.com/p/obaju-e-commerce-template. Big thanks!-->
-                    </p>
+                    
                 </div>
             </div>
         </div>

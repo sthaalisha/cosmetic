@@ -17,11 +17,13 @@
         <script src="{{asset('datatable/jquery-3.6.0.js')}}"></script>
         <link rel="stylesheet" href="{{asset('datatable/datatables.css')}}">
         <script src="{{asset('datatable/datatables.js')}}"></script>
+
+        
     </head>
     <body class="font-sans antialiased">
     <div class="flex">
-            <div class="w-60 h-screen bg-gray-200 shadow-lg shadow-red-300">
-                <img class="bg-white mx-3 w-52 h-40 my-5 rounded-lg py-2" src="https://th.bing.com/th?id=OIP.hOp25rnRG1MBSl2GHTxEMgHaH6&w=241&h=258&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" alt="">
+            <div class="w-60 h-screen bg-FFFF99-200 shadow-lg shadow-red-300">
+                <img class="bg-white mx-2 w-56 h-40 my-2 rounded-lg py-2" src="frontend/img/logo20.png" alt="">
 
                 <div>
 

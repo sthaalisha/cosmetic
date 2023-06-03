@@ -37,8 +37,6 @@
                     
                    <li><a href="{{route('frontend.category', $categoryitem -> id)}}" class="nav-link">{{$categoryitem->name}} <span class="badge badge-secondary"></span></a>
                       <ul class="list-unstyled">
-                      
-                          
                         @foreach ($categoryitem->sub_category as $sub_category)
                         <li><a href="{{route('frontend.subcategory', $sub_category -> id)}}" class="nav-link">{{$sub_category->name}}</a></li> 
                           
@@ -111,10 +109,6 @@
               <div class="banner"><a href="#"><img src="img/banner.jpg" alt="sales 2014" class="img-fluid"></a></div>
             </div>
             <div class="col-lg-9">
-              <div class="box">
-                <h1>{{$current_category -> name}}</h1>
-                <p>In our {{$current_category -> name}} department we offer wide selection of the best products we have found and carefully selected worldwide.</p>
-              </div>
               <div class="box info-bar">
                 <div class="row">
                   <div class="col-md-12 col-lg-4 products-showing">Showing <strong></strong>  <strong></strong> products</div>

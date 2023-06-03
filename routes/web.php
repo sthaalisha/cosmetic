@@ -6,7 +6,9 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Sub_CategoryController;
+use App\Http\Controllers\UserController;
 use App\Models\Category;
+use App\Models\Product;
 use App\Models\Sub_Category;
 use Illuminate\Support\Facades\Route;
 
@@ -23,34 +25,42 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[PageController::class,'home'])->name('home');
 
+Route::get('get/viewproduct/{product}',[PageController::class,'viewproduct'])->name('frontend.viewproduct');
+
 //frontendCategory
 Route::get('/categories/{category}',[PageController::class,'frontendcategory'])->name('frontend.category');
-Route::get('/subcategories/{subcategory}',[PageController::class,'frontendcategory'])->name('frontend.subcategory');
+Route::get('/subcategories/{subcategory}',[PageController::class,'frontendsubcategory'])->name('frontend.subcategory');
 
-
-
-//register
-Route::get('frontend/register', function () {
-    return view('frontend.register');
-})->name('frontend.register');
-
-//about
-Route::get('frontend/about', function() {
-    return view('frontend.layout.about');
-})->name('frontend.about');
-
+//brand
+Route::get('/brands/{brand}',[PageController::class,'frontendbrand'])->name('frontend.brand');
 
 //contact
-Route::get('frontend/contact', function () {
-    return view('frontend.contact');
-})->name('frontend.contact');
+Route::get('/contact',[PageController::class,'contact'])->name('frontend.contact');
+
+//register
+Route::get('/userregister',[UserController::class,'register'])->name('frontend.register');
+Route::post('/userregister',[UserController::class,'userstore'])->name('frontend.register');
+
+//login
+Route::get('/userlogin',[UserController::class,'userlogin'])->name('frontend.userlogin');
+
+//about
+Route::get('/about',[PageController::class,'about'])->name('frontend.layout.about');
+
+
+
+
+
+
+
 
 
 Route::get('/dashboard', function () {
     $category=Category::count();
     $sub_category=Sub_Category::count();
-    return view('dashboard',compact('category','sub_category'));
-})->middleware(['auth', 'verified'])->name('dashboard');
+    $products=Product::count();
+    return view('dashboard',compact('category','sub_category','products'));
+})->middleware(['auth', 'verified','isadmin'])->name('dashboard');
 
 
 
@@ -59,20 +69,20 @@ Route::get('/dashboard', function () {
 
 
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth','isadmin')->group(function () {
 
-    Route::middleware('isadmin')->group(function(){
+   
 
     
 
     //Category
 
-   Route::get('/Category',[CategoryController::class,'index'])->name('Category.index');
-Route::get('/Category/create',[CategoryController::class,'create'])->name('Category.create');
-Route::post('/Category/store',[CategoryController::class,'store'])->name('Category.store');
-Route::get('/Category/{id}/edit',[CategoryController::class,'edit'])->name('Category.edit');
-Route::post('/Category/{id}/update',[CategoryController::class,'update'])->name('category.update');
-Route::post('/category/destroy',[CategoryController::class,'destroy'])->name('category.destroy');
+     Route::get('/Category',[CategoryController::class,'index'])->name('Category.index');
+     Route::get('/Category/create',[CategoryController::class,'create'])->name('Category.create');
+     Route::post('/Category/store',[CategoryController::class,'store'])->name('Category.store');
+     Route::get('/Category/{id}/edit',[CategoryController::class,'edit'])->name('Category.edit');
+     Route::post('/Category/{id}/update',[CategoryController::class,'update'])->name('category.update');
+     Route::post('/category/destroy',[CategoryController::class,'destroy'])->name('category.destroy');
 
     //Brand
     Route::get('/Brand',[BrandController::class,'index'])->name('Brand.index');
@@ -100,7 +110,7 @@ Route::post('/category/destroy',[CategoryController::class,'destroy'])->name('ca
     Route::post('/product/{id}/update',[ProductController::class,'update'])->name('product.update');
     Route::post('/product/destroy',[ProductController::class,'destroy'])->name('product.destroy');
 
-});
+
     
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
