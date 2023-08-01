@@ -101,7 +101,7 @@ Route::middleware(['auth'])->group(function(){
 
 
 
-
+Route::get('/getSubCategories', [CategoryController::class, 'getSubCategories']);
 
 
 Route::middleware('auth','isadmin')->group(function () {

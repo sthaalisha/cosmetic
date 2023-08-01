@@ -35,14 +35,14 @@ class ProductController extends Controller
     {
         
         $data = $request->validate([
-            'brand_id' =>'required',
-            'category_id' =>'required',
+            'brand_id' => 'required',
+            'category_id' => 'required',
             'sub__category_id' => 'required',
-            'name' =>'required',
-            'price' => 'numeric|required',
-            'stock' => 'numeric|required',
-            'description' => 'required',
-            'photopath' => 'required',
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric|min:1',
+            'stock' => 'required|numeric|min:1',
+            'description' => 'required|string',
+            'photopath' => 'required|image',
         ]);
 
         if($request->hasFile('photopath')){

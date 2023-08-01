@@ -9,9 +9,9 @@ class BrandController extends Controller
 {
     public function index()
     {
-        $brands =Brand::all();
-    
-        return view('Brand.index',compact('brands'));
+        $brands = Brand::all();
+
+        return view('Brand.index', compact('brands'));
     }
     public function create()
     {
@@ -20,41 +20,39 @@ class BrandController extends Controller
 
     public function store(Request $request)
     {
-       $data = $request->validate([
-      'name' =>'required',
-      'priority' => 'required|numeric'  
-       ]);
-       
-       Brand::create($data);
-       return redirect(route('Brand.index'))->with('success','Brand create successfully!');
+        $data = $request->validate([
+            'name' => 'required|unique:brands|min:2',
+            'priority' => 'required|numeric'
+        ]);
+
+        Brand::create($data);
+        return redirect(route('Brand.index'))->with('success', 'Brand create successfully!');
     }
     public function edit($id)
     {
         $brand = Brand::find($id);
-        return view('Brand.edit',compact('brand')); 
+        return view('Brand.edit', compact('brand'));
     }
 
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         $data = $request->validate([
-            'name' =>'required',
-            'priority' => 'required|numeric'  
-             ]);  
+            'name' => 'required',
+            'priority' => 'required|numeric'
+        ]);
 
-             $brand = Brand::find($id);
-             $brand->update($data);
-             return redirect(route('Brand.index'))->with('success','Brand updated successfully!');
-
+        $brand = Brand::find($id);
+        $brand->update($data);
+        return redirect(route('Brand.index'))->with('success', 'Brand updated successfully!');
     }
-    
-    
+
+
 
 
     public function destroy(Request $request)
     {
         $brand = Brand::find($request->dataid);
         $brand->delete();
-        return redirect(route('Brand.index'))->with('success','Brand deleted successfully!');
+        return redirect(route('Brand.index'))->with('success', 'Brand deleted successfully!');
     }
-
 }
