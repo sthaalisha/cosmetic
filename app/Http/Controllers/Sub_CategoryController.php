@@ -21,16 +21,6 @@ class Sub_CategoryController extends Controller
         return view('Sub-Category.create',compact('categories'));
     }
 
-    public function store(Request $request)
-    {
-        $data = $request->validate([
-            'category_id' =>'required',
-            'name' =>'required',
-            'priority' => 'required|numeric',
-        ]);
-        Sub_Category::create($data);
-        return redirect(route('Sub-Category.index'))->with('success','Sub-Category Created Successfully');
-    }
 
     public function show()
     {
@@ -44,19 +34,29 @@ class Sub_CategoryController extends Controller
         return view('Sub-Category.edit',compact('sub_category','categories'));
     }   
 
-
+    public function store(Request $request)
+    {
+        $data = $request->validate([
+            'category_id' => 'required',
+            'name' => 'required|unique:sub__scategories',
+            'priority' => 'required|numeric',
+        ]);
+    
+        Sub_Category::create($data);
+        return redirect(route('Sub-Category.index'))->with('success', 'Sub-Category created successfully!');
+    }
+    
     public function update(Request $request, $id)
     {
-        $sub_category = Sub_Category::Find($id);
-        $data = $request->validate(([
-            'category_id' =>'required',
-            'name' =>'required',
+        $sub_category = Sub_Category::find($id);
+        $data = $request->validate([
+            'category_id' => 'required',
+            'name' => 'required|unique:sub_categories,name,' . $sub_category->id,
             'priority' => 'required|numeric',
-        ]));
-
+        ]);
+    
         $sub_category->update($data);
-        return redirect(route('Sub-Category.index'))->with('success','Sub-Category updated successfully');
-
+        return redirect(route('Sub-Category.index'))->with('success', 'Sub-Category updated successfully!');
     }
 
     public function destroy(Request $request)

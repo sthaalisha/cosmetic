@@ -9,9 +9,9 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories =Category::all();
-    
-        return view('Category.index',compact('categories'));
+        $categories = Category::all();
+
+        return view('Category.index', compact('categories'));
     }
     public function create()
     {
@@ -20,41 +20,38 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
-       $data = $request->validate([
-      'name' =>'required',
-      'priority' => 'required|numeric'  
-       ]);
-       
-       Category::create($data);
-       return redirect(route('Category.index'))->with('success','Category create successfully!');
+        $data = $request->validate([
+            'name' => 'required|unique:categories',
+            'priority' => 'required|numeric'
+        ]);
+    
+        Category::create($data);
+        return redirect(route('Category.index'))->with('success', 'Category created successfully!');
     }
+    
+    public function update(Request $request, $id)
+    {
+        $data = $request->validate([
+            'name' => 'required|unique:categories,name,' . $id,
+            'priority' => 'required|numeric'
+        ]);
+    
+        $category = Category::find($id);
+        $category->update($data);
+        return redirect(route('Category.index'))->with('success', 'Category updated successfully!');
+    }
+
     public function edit($id)
     {
         $category = Category::find($id);
-        return view('Category.edit',compact('category')); 
+        return view('Category.edit', compact('category'));
     }
-
-    public function update(Request $request,$id)
-    {
-        $data = $request->validate([
-            'name' =>'required',
-            'priority' => 'required|numeric'  
-             ]);  
-
-             $category = Category::find($id);
-             $category->update($data);
-             return redirect(route('Category.index'))->with('success','Category updated successfully!');
-
-    }
-    
-    
 
 
     public function destroy(Request $request)
     {
         $category = Category::find($request->dataid);
         $category->delete();
-        return redirect(route('Category.index'))->with('success','Category deleted successfully!');
+        return redirect(route('Category.index'))->with('success', 'Category deleted successfully!');
     }
-
 }
