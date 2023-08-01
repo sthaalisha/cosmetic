@@ -1,7 +1,25 @@
 @extends('frontend.layout.header')
+
 @section('content')
 
-<div class="col-lg-9 order-1 order-lg-2">
+@include('layouts.message')
+
+  <div id="all">
+    <div id="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{route('frontend.category',$product->category->id)}}">Categories</a></li>
+        <li aria-current="page" class="breadcrumb-item active">View Product</li>
+     </ol>
+    </nav>
+                </div>
+
+                <div class="col-lg-9 order-1 order-lg-2">
     <div id="productMain" class="row text-center" style="margin-left: 250px;">
         <div class="col-md-6">
             <div data-slider-id="1" class="owl-carousel shop-detail-carousel">
@@ -22,8 +40,10 @@
                 <p class="goToDescription text-center"><a href="#details" class="scroll-to">Scroll to product description</a></p>
                 <div class="form-group row">
                     <label for="quantity" class="col-sm-2 col-form-label" style="font-weight: bold;">Qty:</label>
+                    <form action="{{route('cart.store')}}" method="POST">
+                        @csrf
                     <div class="col-sm-10">
-                        <input type="number" id="quantity" name="quantity" class="form-control" min="0" max="{{$product->stock}}" value="0" style="padding: 0.375rem 0.75rem; font-size: 0.875rem; margin-top: 0.25rem;">
+                        <input type="number" name="qty" class="form-control" min="1" max="{{$product->stock}}" value="1" style="padding: 0.375rem 0.75rem; font-size: 0.875rem; margin-top: 0.25rem;">
                     </div>
                 </div>
                 <p class="text-center">In Stock: {{$product->stock}}</p>
@@ -31,8 +51,10 @@
 
                 <p class="price text-center">Rs. {{$product->price}}</p>
                 <p class="text-center buttons">
-                    <a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                <input type="hidden" name="product_id" value="{{$product->id}}">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to cart</button>
                 </p>
+                </form>
             </div>
             <div data-slider-id="1" class="owl-thumbs">
                 <button class="owl-thumb-item"><img src="{{asset('images/products/'.$product->photopath)}}" alt="" class="img-fluid"></button>
@@ -59,6 +81,22 @@
         </div>
     </div>
 </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+  </div>  
+
+
+
+
+
+
+
+
 
 
 @endsection

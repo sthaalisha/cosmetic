@@ -3,12 +3,11 @@
 
 <head>
 <style>
-    .navbar-nav {
-        background-color: #f0f0f1;
-        text-decoration-color: black; 
-    }
+
 
     .navbar-nav li {
+        
+        margin-bottom: 20px;
         margin-right: 10px; 
     }
 
@@ -19,6 +18,19 @@
 
     .product .item{
         width: 200px;
+    }
+
+        .nav-link {
+        background-color: #EEEBCD ;
+        
+        text-decoration-color: blue;
+        text-size-adjust: 20px;
+        transition: background-color 0.3s ease; /* Adding transition for smooth effect */
+    }
+
+    .nav-link:hover {
+        background-color: blanchedalmond; /* Specify the desired hover color */
+    
     }
 </style>
     <meta charset="utf-8">
@@ -48,6 +60,7 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
 
 
+        
 
 
 </head>
@@ -55,7 +68,7 @@
 
 <body>
     <!-- navbar-->
-    <header class="header mb-5">
+
         <!--
       *** TOPBAR ***
       _________________________________________________________
@@ -71,7 +84,7 @@
             <ul class="menu list-inline mb-0">
                 @if(auth()->user())
                     <li>
-                        <a href="">{{auth()->user()->name}}</a>
+                        <a href="{{ route('userprofile',auth()->user()->id) }}"><i class="fa fa-user"></i>{{auth()->user()->name}}</a>
                         <form class="inline text-white" action="{{route('logout')}}" method="POST">
                             @csrf
                             <button type="submit" class="btn btn-link"><i class="fa fa-sign-out"></i></button>
@@ -122,10 +135,10 @@
 
 
         </div>
-        <nav class="navbar navbar-expand-lg">
+        <nav class="navbar navbar-expand-lg sticky-top">
             <div class="container"><a href="{{ route('home') }}" class="navbar-brand home"><img
                         src="{{ asset('frontend/img/logo20.png') }}" alt=" logo"
-                        class="d-none d-md-inline-block"><img src="{{ asset('frontend/img/logo20.png') }}"
+                        class="d-none d-md-inline-block"><img src="{{ asset('frontend/img/logo200.png') }}"
                         alt="logo" class="d-inline-block d-md-none"><span class="sr-only">logo - go to
                         homepage</span></a>
                 <div class="navbar-buttons">
@@ -146,6 +159,8 @@
                             <li class="nav-item"><a href="/categories/{{$categoryitem -> id}}" class="nav-link">{{$categoryitem -> name}}</a></li>
                         @endforeach
 
+                        
+
                         <li class="nav-item"><a href="{{route('frontend.contact')}}" class="nav-link">Contact Us</a></li>
 
                 
@@ -155,9 +170,12 @@
                     <div id="search-not-mobile" class="navbar-collapse collapse"></div><a data-toggle="collapse"
                         href="#search" class="btn navbar-btn btn-primary d-none d-lg-inline-block"><span
                             class="sr-only">Toggle search</span><i class="fa fa-search"></i></a>
+                    @if (auth()->user())
                     <div id="basket-overview" class="navbar-collapse collapse d-none d-lg-block"><a
-                            href="basket.html" class="btn btn-primary navbar-btn"><i
-                                class="fa fa-shopping-cart"></i><span>Cart</span></a></div>
+                            href="{{route('cart.index')}}" class="btn btn-primary navbar-btn"><i
+                                class="fa fa-shopping-cart"></i><span>({{$itemsincart}})-item in cart</span></a></div>  
+                    @endif
+                    
                 </div>
             </div>
             </div>
@@ -174,7 +192,7 @@
                 </form>
             </div>
         </div>
-    </header>
+
 
     @yield('content')
 

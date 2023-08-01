@@ -10,6 +10,8 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -17,19 +19,24 @@
         <script src="{{asset('datatable/jquery-3.6.0.js')}}"></script>
         <link rel="stylesheet" href="{{asset('datatable/datatables.css')}}">
         <script src="{{asset('datatable/datatables.js')}}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
         
     </head>
     <body class="font-sans antialiased">
     <div class="flex">
             <div class="w-60 h-screen bg-FFFF99-200 shadow-lg shadow-red-300">
-                <img class="bg-white mx-2 w-56 h-40 my-2 rounded-lg py-2" src="frontend/img/logo20.png" alt="">
+                <img class="bg-white mx-2 w-56 h-40 my-2 rounded-lg py-2" src="{{asset('frontend/img/logo20.png')}}" alt="">
 
                 <div>
 
-                <h3>Hello, {{auth()->user()->role}}</h3>
-                    <a href="dashboard" class="text -xl font-bold border-b-2 border-blue-500 block ml-4 px-4
+                
+                    <a href="/dashboard" class="text -xl font-bold border-b-2 border-blue-500 block ml-4 px-4
                     py-1 hover:bg-blue-500 hover:text-white">Dashboard</a>
+
+                    <a href="{{route('user.index')}}" class="text -xl font-bold border-b-2 border-blue-500 block ml-4 px-4
+                    py-1 hover:bg-blue-500 hover:text-white">Users</a>
+
                     <a href="{{route('Category.index')}}" class="text -xl font-bold border-b-2 border-blue-500 block ml-4 px-4
                     py-1 hover:bg-blue-500 hover:text-white">Category</a>
                     <a href="{{route('Sub-Category.index')}}" class="text -xl font-bold border-b-2 border-blue-500 block ml-4 px-4
@@ -37,12 +44,14 @@
 
                     <a href="{{route('product.index')}}" class="text -xl font-bold border-b-2 border-blue-500 block ml-4 px-4
                     py-1 hover:bg-blue-500 hover:text-white">Product</a>
-                    <a href="" class="text -xl font-bold border-b-2 border-blue-500 block ml-4 px-4
+                    <a href="{{route('order.index')}}" class="text -xl font-bold border-b-2 border-blue-500 block ml-4 px-4
                     py-1 hover:bg-blue-500 hover:text-white">Order</a>
                     <a href="{{route('Brand.index')}}" class="text -xl font-bold border-b-2 border-blue-500 block ml-4 px-4
                     py-1 hover:bg-blue-500 hover:text-white">Brand</a>
-                    <a href="" class="text -xl font-bold border-b-2 border-blue-500 block ml-4 px-4
-                    py-1 hover:bg-blue-500 hover:text-white">Gallery</a>
+
+                    <a href="{{route('adminprofile.index')}}" class="text -xl font-bold border-b-2 border-blue-500 block ml-4 px-4
+                    py-1 hover:bg-blue-500 hover:text-white">Profile</a>
+            
 
                     <form action="{{route('logout')}}" method="POST" class="border-b-2 border-blue-500 ml-4">
                         @csrf

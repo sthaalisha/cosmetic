@@ -1,7 +1,12 @@
 <?php
 
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KhaltiController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -10,6 +15,7 @@ use App\Http\Controllers\UserController;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Sub_Category;
+use Illuminate\Routing\RouteRegistrar;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,7 +53,13 @@ Route::get('/userlogin',[UserController::class,'userlogin'])->name('frontend.use
 //about
 Route::get('/about',[PageController::class,'about'])->name('frontend.layout.about');
 
+ //contact
+ Route::post('/frontend/contact/submit', [ContactController::class, 'submit'])->name('contact.submit');
 
+//userprofile   
+Route::get('/frontend/userprofile/{id}',[UserController::class,'userprofile'])->name('userprofile');
+Route::post('/frontend/updateprofile',[UserController::class,'userupdate'])->name('userprofile.update');
+Route::get('/frontend/editprofile/{id}',[UserController::class,'editprofile'])->name('editprofile');
 
 
 
@@ -56,13 +68,36 @@ Route::get('/about',[PageController::class,'about'])->name('frontend.layout.abou
 
 
 Route::get('/dashboard', function () {
-    $category=Category::count();
-    $sub_category=Sub_Category::count();
-    $products=Product::count();
-    return view('dashboard',compact('category','sub_category','products'));
+   
+    return view('dashboard');
 })->middleware(['auth', 'verified','isadmin'])->name('dashboard');
 
 
+
+Route::middleware(['auth'])->group(function(){
+    //cart
+    Route::get('/frontend/viewcart',[CartController::class,'index'])->name('cart.index');
+    Route::post('/frontend/viewcart/store',[CartController::class,'store'])->name('cart.store');
+    Route::get('/frontend/viewcart/{id}/destroy',[CartController::class,'destroy'])->name('cart.destroy');
+    Route::post('/frontend/viewcart/{id}/update',[CartController::class,'update'])->name('cart.update');
+
+    //khalti
+    Route::post('khalti/verify',[KhaltiController::class,'verify'])->name('khalti.verify');
+
+
+    //order
+    Route::post('/order/store',[OrderController::class,'store'])->name('order.store');
+
+
+    //checkout
+    Route::get('/frontend/checkout',[CartController::class,'checkout'])->name('cart.checkout');
+
+
+    //vieworders
+    Route::get('/frontend/vieworder',[PageController::class,'order'])->name('user.order');
+
+   
+});
 
 
 
@@ -110,6 +145,29 @@ Route::middleware('auth','isadmin')->group(function () {
     Route::post('/product/{id}/update',[ProductController::class,'update'])->name('product.update');
     Route::post('/product/destroy',[ProductController::class,'destroy'])->name('product.destroy');
 
+
+    //order
+    Route::get('/order',[OrderController::class,'index'])->name('order.index');
+    Route::get('/order/{id}/edit',[OrderController::class,'edit'])->name('order.edit');
+    Route::post('/order/{id}/update',[OrderController::class,'update'])->name('order.update');
+    Route::get('/order/status/{id}/{status}',[OrderController::class,'status'])->name('order.status');
+    Route::get('/order/{id}/details',[OrderController::class,'details'])->name('order.detail');
+
+
+    //userview
+    Route::get('/userview',[UserController::class,'index'])->name('user.index');
+
+    //add admin
+    Route::get('/admin/create',[UserController::class,'createadmin'])->name('user.createadmin');
+    Route::post('/admin/store',[UserController::class,'userstore'])->name('admin.store');
+
+
+    //viewadminprofile
+    Route::get('/adminprofile',[UserController::class,'adminprofile'])->name('adminprofile.index');
+    Route::get('/adminprofile/edit/{id}',[UserController::class,'adminedit'])->name('adminprofile.edit');
+
+    //dashboard
+    Route::get('/dashboard',[DashboardController::class,'dashboard'])->name('dashboard');
 
     
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

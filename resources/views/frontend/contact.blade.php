@@ -13,21 +13,20 @@
           <div class="row">
             <div class="col-md-4">
               <h3><i class="fa fa-map-marker"></i>Address</h3>
-              <p>13/25 New Avenue<br>New Heaven<br>45Y 73J<br>England<br><strong>Great Britain</strong></p>
+              <p>Lumbini<br>Nawalpur<br>Devchuli-10<br><br><strong>Pragatinagar</strong></p>
             </div>
             <!-- /.col-sm-4-->
             <div class="col-md-4">
               <h3><i class="fa fa-phone"></i> Call center</h3>
-              <p class="text-muted">This number is toll free if calling from Great Britain otherwise we advise you to use the electronic form of communication.</p>
-              <p><strong>+33 555 444 333</strong></p>
+              <p class="text-muted">Contact with the help of this number if any problem arise in our sites .</p>
+              <p><strong>9805434310</strong></p>
             </div>
             <!-- /.col-sm-4-->
             <div class="col-md-4">
               <h3><i class="fa fa-envelope"></i> Electronic support</h3>
-              <p class="text-muted">Please feel free to write an email to us or to use our electronic ticketing system.</p>
+              <p class="text-muted">Please feel free to write an email to us.</p>
               <ul>
-                <li><strong><a href="mailto:">info@fakeemail.com</a></strong></li>
-                <li><strong><a href="#">Ticketio</a></strong> - our ticketing support platform</li>
+                <li><strong><a href="mailto:">alishastha892@gmail.com</a></strong></li>
               </ul>
             </div>
             <!-- /.col-sm-4-->
@@ -37,36 +36,37 @@
           <div id="map"></div>
           <hr>
           <h2 class="text-center">Contact form</h2>
-          <form>
+          <form action="{{ route('contact.submit') }}" method="POST">
+            @csrf
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="firstname">Firstname</label>
-                  <input id="firstname" type="text" class="form-control">
+                  <input id="firstname" name="firstname" type="text" class="form-control">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="lastname">Lastname</label>
-                  <input id="lastname" type="text" class="form-control">
+                  <input id="lastname" name="lastname" type="text" class="form-control">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="email">Email</label>
-                  <input id="email" type="text" class="form-control">
+                  <input id="email" name="email" type="text" class="form-control">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="subject">Subject</label>
-                  <input id="subject" type="text" class="form-control">
+                  <input id="subject" name="subject" type="text" class="form-control">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="message">Message</label>
-                  <textarea id="message" class="form-control"></textarea>
+                  <textarea id="message" name="message" class="form-control"></textarea>
                 </div>
               </div>
               <div class="col-md-12 text-center">

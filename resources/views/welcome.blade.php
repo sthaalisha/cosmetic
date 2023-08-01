@@ -1,4 +1,5 @@
 @extends('frontend.layout.header')
+
 <style>
   .product-image {
     width: 400px;
@@ -10,6 +11,7 @@
   }
 </style>
 @section('content')
+@include('layouts.message')
 <div id="all">
   <div id="content">
     <div class="container">
@@ -19,7 +21,7 @@
             <div class="item"><img src="{{asset('frontend/img/slide11.png')}}" alt="" class="img-fluid"></div>
             <div class="item"><img src="{{asset('frontend/img/slide61.png')}}" alt="" class="img-fluid"></div>
             <div class="item"><img src="{{asset('frontend/img/slide41.png')}}" alt="" class="img-fluid"></div>
-            <div class="item"><img src="{{asset('frontend/img/slide51.png')}}" alt="" class="img-fluid"></div>
+        
           </div>
           <!-- /#main-slider-->
         </div>
@@ -97,8 +99,10 @@
               <h3><a href="{{route('frontend.viewproduct',$product->id)}}">{{$product->name}}</a></h3>
               <div class="form-group row">
                 <label for="quantity" class="col-sm-2 col-form-label">Qty:</label>
+                <form action="{{route('cart.store')}}" method="POST">
+                @csrf
                 <div class="col-sm-10">
-                  <input type="number" id="quantity" name="quantity" class="form-control" min="0" max="{{$product->stock}}" value="0">
+                  <input type="number" name="qty" class="form-control" min="1" max="{{$product->stock}}" value="1">
                 </div>
               </div>
               <p class="text-center">In Stock: {{$product->stock}}</p>
@@ -112,8 +116,14 @@
 
               <p class="buttons">
                 <a href="{{route('frontend.viewproduct',$product->id)}}" class="btn btn-outline-secondary">View detail</a>
-                <a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                
+                 
+                <input type="hidden" name="product_id" value="{{$product->id}}">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                
+                
               </p>
+              </form>
             </div>
           </div>
 
@@ -219,5 +229,7 @@
   </div>
 </div>
 @yield('content')
+
+
 
 @endsection

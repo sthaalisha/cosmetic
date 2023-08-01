@@ -15,7 +15,7 @@
                 </ol>
               </nav>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6" style="margin-left: 250px;">
               <div class="box">
                 <h1>New account</h1>
                 <p class="lead">Not our registered customer yet?</p>
@@ -26,32 +26,37 @@
                   @csrf
                   <div class="form-group">
                     <label for="name">Name</label>
-                    <input name="name" type="text" placeholder="Enter your name" class="form-control">
+                    <input name="name" type="text" placeholder="Enter your name" class="form-control" required>
                   </div>
                   <div class="form-group">
                     <label for="email">Email</label>
-                    <input name="email" type="text" placeholder="Enter your email" class="form-control">
+                    <input name="email" type="text" placeholder="Enter your email" class="form-control" required>
                   </div>
                   <div class="form-group">
                     <label for="address">Address</label>
-                    <input name="address" type="text" placeholder="Enter your address" class="form-control">
+                    <input name="address" type="text" placeholder="Enter your address" class="form-control" required>
                   </div>
                   <div class="form-group">
                     <label for="phone">Phone Number</label>
-                    <input name="phone" type="text" placeholder="Enter your phone" class="form-control">
+                    <input name="phone" type="text" placeholder="Enter your phone" class="form-control" required>
                   </div>
                   <div class="form-group">
                     <label for="password">Password</label>
-                    <input name="password" type="password" placeholder="Enter your password" class="form-control">
+                    <input name="password" type="password" placeholder="Enter your password" class="form-control" required>
                   </div>
 
                   <div class="form-group">
                     <label for="password_confirmation">Confirm Password</label>
-                    <input name="password_confirmation" type="password" placeholder="Confirm Password" class="form-control">
+                    <input name="password_confirmation" type="password" placeholder="Confirm Password" class="form-control" required>
                   </div>
 
                   <div class="text-center">
                     <button type="submit" class="btn btn-primary"><i class="fa fa-user-md"></i> Register</button>
+                    
+                  </div>
+                  <br>
+                  <div class="text-center">
+                  <p>if you already have account?<a href="{{route('frontend.userlogin')}}"> Login here</a></p>
                   </div>
                 </form>
               </div>
