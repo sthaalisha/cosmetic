@@ -38,7 +38,7 @@ class Sub_CategoryController extends Controller
     {
         $data = $request->validate([
             'category_id' => 'required',
-            'name' => 'required|unique:sub__scategories',
+            'name' => 'required|unique:sub__categories',
             'priority' => 'required|numeric',
         ]);
     
@@ -51,7 +51,7 @@ class Sub_CategoryController extends Controller
         $sub_category = Sub_Category::find($id);
         $data = $request->validate([
             'category_id' => 'required',
-            'name' => 'required|unique:sub_categories,name,' . $sub_category->id,
+            'name' => 'required|unique:sub__categories,name,' . $sub_category->id,
             'priority' => 'required|numeric',
         ]);
     
