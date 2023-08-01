@@ -31,9 +31,9 @@
                 </div>
             </div>
             <!--
-            *** ADVANTAGES HOMEPAGE ***
-            _________________________________________________________
-            -->
+                *** ADVANTAGES HOMEPAGE ***
+                _________________________________________________________
+                -->
             <div id="advantages">
                 <div class="container">
                     <div class="row mb-4">
@@ -67,9 +67,9 @@
             <!-- /#advantages-->
             <!-- *** ADVANTAGES END ***-->
             <!--
-            *** HOT PRODUCT SLIDESHOW ***
-            _________________________________________________________
-            -->
+                *** HOT PRODUCT SLIDESHOW ***
+                _________________________________________________________
+                -->
             <div id="hot">
                 <div class="box py-4">
                     <div class="container">
@@ -98,16 +98,18 @@
                                         <div class="back">
                                             <a href="{{ route('frontend.viewproduct', $product->id) }}"><img
                                                     class="product-image"
-                                                    src="{{ asset('images/products/' . $product->photopath) }}" alt=""
-                                                    class="img-fluid"></a>
+                                                    src="{{ asset('images/products/' . $product->photopath) }}"
+                                                    alt="" class="img-fluid"></a>
                                         </div>
                                     </div>
                                 </div>
                                 <a href="{{ route('frontend.viewproduct', $product->id) }}" class="invisible"><img
-                                        class="h-32 product-image" src="{{ asset('images/products/' . $product->photopath) }}"
-                                        alt="" class="img-fluid"></a>
+                                        class="h-32 product-image"
+                                        src="{{ asset('images/products/' . $product->photopath) }}" alt=""
+                                        class="img-fluid"></a>
                                 <div class="text">
-                                    <h3><a href="{{ route('frontend.viewproduct', $product->id) }}">{{ $product->name }}</a>
+                                    <h3><a
+                                            href="{{ route('frontend.viewproduct', $product->id) }}">{{ $product->name }}</a>
                                     </h3>
                                     <div class="form-group row">
                                         <label for="quantity" class="col-sm-2 col-form-label">Qty:</label>
@@ -164,9 +166,9 @@
     </div>
     </div>
     <!--
-        *** FOOTER ***
-        _________________________________________________________
-        -->
+            *** FOOTER ***
+            _________________________________________________________
+            -->
     <div class="p-4 m-3">
         <div id="contact" class="box p-4">
             <center>

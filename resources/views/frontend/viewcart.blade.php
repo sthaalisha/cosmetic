@@ -99,14 +99,6 @@
                 
               </div>
               <!-- /.box-->
-              <div class="row same-height-row">
-                <div class="col-lg-3 col-md-6">
-                  <div class="box same-height">
-                    <h3>You may also like these products</h3>
-                  </div>
-                </div>
-                
-                
                 
               </div>
             </div>
