@@ -6,8 +6,9 @@ use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
-use Illuminate\Contracts\View\View;
+use App\Models\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Redis;
@@ -20,6 +21,7 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Order::all();
+        View::where('tabName', 'orders')->update(['notViewed' => 0]);
         return view('orders.index',compact('orders'));
     }
 
@@ -131,6 +133,7 @@ class OrderController extends Controller
         $data['cart_id'] = implode(',' ,$ids);
 
          Order::create($data);
+         View::where('tabName', 'orders')->update(['notViewed' => DB::raw('notViewed + 1')]);
          Cart::whereIn('id',$ids)->update(['is_ordered' => true]);
 
          //mail 
