@@ -30,13 +30,13 @@
     <p class="text-red-600 text-xs -mt-2">{{$message}}</p>
     @enderror
 
-    <input type="number" placeholder="Price" name="price" class="w-full rounded-lg border-gray-300 my-2" value="{{old('price')}}">
+    <input type="number" placeholder="Price" name="price" min="1" class="w-full rounded-lg border-gray-300 my-2" value="{{old('price')}}">
     @error('price')
     <p class="text-red-600 text-xs -mt-2">{{$message}}</p>
     @enderror
 
 
-    <input type="number" placeholder="Stock" name="stock" class="w-full rounded-lg border-gray-300 my-2" value="{{old('stock')}}">
+    <input type="number" placeholder="Stock" name="stock" min="1" class="w-full rounded-lg border-gray-300 my-2" value="{{old('stock')}}">
     @error('stock')
     <p class="text-red-600 text-xs -mt-2">{{$message}}</p>
     @enderror

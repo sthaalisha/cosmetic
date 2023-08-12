@@ -7,10 +7,10 @@
 
 
 
-    <div class="fa-3x text-center">
+    <!-- <div class="fa-3x text-center">
         <i class="fa-solid fa-cog fa-spin" style="color: #09d7b5;"></i>
         <i class="fa-solid fa-cog fa-spin fa-spin-reverse" style="color: #09d7b5;"></i>
-    </div>
+    </div> -->
 
     <form action="{{ route('admin.store') }}" method="POST" class="max-w-lg mx-auto">
         @csrf

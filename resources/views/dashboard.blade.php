@@ -6,11 +6,11 @@
 @include('layouts.message')
 
 
-<h2 class="font-bold text-5xl text-blue-700">Dashboard</h2>
+<h2 class="font-bold text-4xl text-blue-700">Dashboard</h2>
 <hr class="h-1 bg-blue-200">
 
 <div class="mt-4 grid grid-cols-3 gap-10">
-    <div class="px-4 py-8 rounded-lg bg-white-600 text-black flex justify-between border border-black"><a href="{{ route('home') }}" class="navbar-brand home">
+    <div class="px-4 py-8 rounded-lg bg-white-600 text-black flex justify-between border border-black"><a href="{{ route('dashboard') }}" class="navbar-brand home">
       <img src="{{ asset('frontend/img/back2.png') }}" alt=" logo" class="d-none d-md-inline-block">
                         <span class="sr-only"></span></a>
         <p class="font-bold text-4xl">Total Categories</p>

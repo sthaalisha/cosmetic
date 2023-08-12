@@ -1,96 +1,112 @@
 @extends('frontend.layout.header')
 
 <style>
-    /* CSS styles for the form */
-    .form-container {
-        max-width: 400px;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: #f2f2f2;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
+  /* CSS styles for the form */
+  .form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 80px 20px; /* Increase the top and bottom padding */
+    background-color: #c2c2c2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
 
-    .form-group {
-        margin-bottom: 20px;
-    }
+  .form-group {
+    margin-bottom: 20px;
+    font-size:medium ;
+    
+  }
 
-    .form-group label {
-        display: block;
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+   
+  }
 
-    .form-group input[type="text"],
-    .form-group input[type="email"],
-    .form-group input[type="phone"] {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-    }
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: medium;
+  }
 
-    .form-group button {
-        display: block;
-        margin: 0 auto;
-        text-align: center;
-        padding: 10px 20px;
-        background-color: #4CAF50;
-        color: #fff;
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
-    }
+  .form-group .submit-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px; /* Increase the font size */
+    text-decoration: none;
+  }
 
-    .form-group button:hover {
-        background-color: #45a049;
-    }
+  .button-container{
+    display: inline-block;
+    padding: 10px 20px;
+    margin-left: 6rem;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: medium;
+  }
+
+  .button-container:hover {
+    background-color: #45a049;
+  }
 </style>
 
 @section('content')
-    <div class="form-container">
-        <h2 class="text-center" style="margin-top: 10px;">Edit Your Profile</h2>
-        <form action="{{ route('userprofile.update') }}" method="POST">
-            @csrf
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" value="{{ auth()->user()->name }}" required
-                    class="@error('name') is-invalid @enderror">
-                @error('name')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-            </div>
+<div class="form-container">
+<img class="profile-picture" src="https://st3.depositphotos.com/15648834/17930/v/450/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" alt="Profile Picture" style="display: block; margin: 0 auto 10px; width: 150px; height: 150px; border-radius: 50%;">
+  <h1 class="text-center" style="font-size: large;">Edit Profile</h1>
+  
 
-            <div class="form-group">
-                <label for="address">Address</label>
-                <input type="text" id="address" name="address" value="{{ auth()->user()->address }}" required
-                    class="@error('address') is-invalid @enderror">
-                @error('address')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-            </div>
-
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" value="{{ auth()->user()->email }}" required
-                    class="@error('email') is-invalid @enderror">
-                @error('email')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-            </div>
-
-            <div class="form-group">
-                <label for="phone">Phone</label>
-                <input type="text" id="phone" name="phone" value="{{ auth()->user()->phone }}" required
-                    class="@error('phone') is-invalid @enderror">
-                @error('phone')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-            </div>
-
-            <div class="form-group text-center">
-              <button type="submit">Update</button>
-            </div>
-        </form>
+  <form action="{{route('userprofile.update')}}" method="POST">
+    @csrf
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" value="{{auth()->user()->name}}"  class="@error('name') is-invalid @enderror" required>
+      @error('name')
+      <div class="invalid-feedback">{{ $message }}</div>
+      @enderror
     </div>
+
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input type="text" id="address" name="address" value="{{auth()->user()->address}}"  class="@error('address') is-invalid @enderror" required>
+      @error('address')
+      <div class="invalid-feedback">{{ $message }}</div>
+      @enderror
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" value=" {{auth()->user()->email}}" class="@error('email') is-invalid @enderror" required>
+      @error('email')
+      <div class="invalid-feedback">{{ $message }}</div>
+      @enderror
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input type="text" id="phone" name="phone" value="{{auth()->user()->phone}}"  class="@error('phone') is-invalid @enderror" required>
+      @error('phone')
+      <div class="invalid-feedback">{{ $message }}</div>
+      @enderror
+    </div>
+
+    <div class="button-container">
+        <button type="submit" class="button-link">Update Profile</button>
+       
+    </div>
+  
+  </form>
+</div>
 @endsection

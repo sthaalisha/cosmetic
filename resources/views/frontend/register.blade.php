@@ -79,7 +79,9 @@
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary"><i class="fa fa-user-md"></i>
                                         Register</button>
-                                </div>
+                                </div><br>
+                                <p class="text-center">if you already have account?<a href="{{ route('frontend.userlogin') }}"> Login here</a>
+                                </p>
                             </form>
                         </div>
                     </div>

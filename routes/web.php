@@ -61,7 +61,8 @@ Route::get('/frontend/userprofile/{id}',[UserController::class,'userprofile'])->
 Route::post('/frontend/updateprofile',[UserController::class,'userupdate'])->name('userprofile.update');
 Route::get('/frontend/editprofile/{id}',[UserController::class,'editprofile'])->name('editprofile');
 
-
+//search
+Route::get('/search',[PageController::class,'search'])->name('search');
 
 
 

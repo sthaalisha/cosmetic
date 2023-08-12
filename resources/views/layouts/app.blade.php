@@ -24,44 +24,44 @@
         
     </head>
     <body class="font-sans antialiased">
-    <div class="flex">
-            <div class="w-60 h-screen bg-FFFF99-200 shadow-lg shadow-red-300">
+    <div class="">
+            <div class="w-56 fixed top-0 bottom-0 left-0 bg-FFFF99-200 shadow-lg shadow-red-300">
                 <img class="bg-white mx-2 w-56 h-40 my-2 rounded-lg py-2" src="{{asset('frontend/img/logo20.png')}}" alt="">
 
                 <div>
 
                 
                     <a href="/dashboard" class="text -xl font-bold border-b-2 border-blue-500 block ml-4 px-4
-                    py-1 hover:bg-blue-500 hover:text-white">Dashboard</a>
+                    py-1 hover:bg-blue-500 hover:text-white"><i class="fa-solid fa-gauge"></i> Dashboard</a>
 
                     <a href="{{route('user.index')}}" class="text -xl font-bold border-b-2 border-blue-500 block ml-4 px-4
-                    py-1 hover:bg-blue-500 hover:text-white">Users</a>
+                    py-1 hover:bg-blue-500 hover:text-white"><i class="fa-solid fa-users"></i> Users</a>
 
                     <a href="{{route('Category.index')}}" class="text -xl font-bold border-b-2 border-blue-500 block ml-4 px-4
-                    py-1 hover:bg-blue-500 hover:text-white">Category</a>
+                    py-1 hover:bg-blue-500 hover:text-white"><i class="fa-solid fa-grip-vertical"></i> Category</a>
                     <a href="{{route('Sub-Category.index')}}" class="text -xl font-bold border-b-2 border-blue-500 block ml-4 px-4
-                    py-1 hover:bg-blue-500 hover:text-white">Sub-Category</a>
+                    py-1 hover:bg-blue-500 hover:text-white"><i class="fa-solid fa-grip"></i> Sub-Category</a>
 
                     <a href="{{route('product.index')}}" class="text -xl font-bold border-b-2 border-blue-500 block ml-4 px-4
-                    py-1 hover:bg-blue-500 hover:text-white">Product</a>
+                    py-1 hover:bg-blue-500 hover:text-white"><i class="fa-brands fa-product-hunt"></i> Product</a>
                     <a href="{{route('order.index')}}" class="text -xl font-bold border-b-2 border-blue-500 block ml-4 px-4
-                    py-1 hover:bg-blue-500 hover:text-white">Order</a>
+                    py-1 hover:bg-blue-500 hover:text-white"><i class="fa-solid fa-arrow-up-short-wide"></i> Order</a>
                     <a href="{{route('Brand.index')}}" class="text -xl font-bold border-b-2 border-blue-500 block ml-4 px-4
-                    py-1 hover:bg-blue-500 hover:text-white">Brand</a>
+                    py-1 hover:bg-blue-500 hover:text-white"><i class="fa-solid fa-face-laugh-beam"></i> Brand</a>
 
                     <a href="{{route('adminprofile.index')}}" class="text -xl font-bold border-b-2 border-blue-500 block ml-4 px-4
-                    py-1 hover:bg-blue-500 hover:text-white">Profile</a>
+                    py-1 hover:bg-blue-500 hover:text-white"><i class="fa-solid fa-user"></i> Profile</a>
             
 
                     <form action="{{route('logout')}}" method="POST" class="border-b-2 border-blue-500 ml-4">
                         @csrf
-                        <input type="submit" value="Logout" class="text-xl font-bold block px-2 py-1 w-full text-left cursor-pointer hover:bg-blue-500 hover:text-white">
+                        <input type="submit" value="Logout" class="text-md font-bold block ml-1 px-2 py-1 w-full text-left cursor-pointer hover:bg-blue-500 hover:text-white">
                     </form>
 
                 </div>
                 </div>
 
-                <div class="p-4 flex-1">
+                <div class="p-4 pl-60">
                     @yield('content')
 
                 </div>

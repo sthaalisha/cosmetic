@@ -128,5 +128,33 @@ class PageController extends Controller
         return view('frontend.vieworder', compact('products', 'category', 'sub_category', 'categories', 'brand','itemsincart','orders'));
     }
 
+    public function search(Request  $request){
+        $itemsincart= $this->include(); 
+        $category = Category::all();
+        $brand = Brand::all();
+        $sub_category = Sub_Category::all();
+        $categories = Category::orderBy('priority')->get();
+        $searchText = $request->input('searchtext');
+        $products = Product::where('name', 'like', '%' . $searchText . '%')
+        ->orWhereHas('brand', function ($query) use ($searchText) {
+            $query->where('name', 'like', '%' . $searchText . '%');
+        })
+        ->orWhereHas('category', function ($query) use ($searchText) {
+            $query->where('name', 'like', '%' . $searchText . '%');
+        })
+        ->orWhere('price', 'like', '%' . $searchText . '%')
+        ->with('brand', 'category')
+        ->get();
+
+        foreach ($products as $product) {
+            $brandName= $product->brand->name;       // brand's name for each product
+            $categoryName = $product->category->name;   // Category's name for each product
+        }
+   
+        return view('search',compact('products','itemsincart','category','brand','sub_category'));
+      
+
+    }
+
    
 }

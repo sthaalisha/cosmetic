@@ -141,15 +141,7 @@
                         class="d-none d-md-inline-block"><img src="{{ asset('frontend/img/logo200.png') }}"
                         alt="logo" class="d-inline-block d-md-none"><span class="sr-only">logo - go to
                         homepage</span></a>
-                <div class="navbar-buttons">
-                    <button type="button" data-toggle="collapse" data-target="#navigation"
-                        class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle
-                            navigation</span><i class="fa fa-align-justify"></i></button>
-                    <button type="button" data-toggle="collapse" data-target="#search"
-                        class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle search</span><i
-                            class="fa fa-search"></i></button><a href="basket.html"
-                        class="btn btn-outline-secondary navbar-toggler"><i class="fa fa-shopping-cart"></i></a>
-                </div>
+               
                 <div id="navigation" class="collapse navbar-collapse">
                     <ul class="navbar-nav mr-auto">
                        <li class="nav-item" ><a href="/" class="nav-link">Home</a></li>
@@ -182,9 +174,10 @@
         </nav>
         <div id="search" class="collapse">
             <div class="container">
-                <form role="search" class="ml-auto">
+                <form action="{{route('search')}}" method="GET" role="search" class="ml-auto">
+                    @csrf
                     <div class="input-group">
-                        <input type="text" placeholder="Search" class="form-control">
+                        <input type="search" name="searchtext" placeholder="Search" class="form-control">
                         <div class="input-group-append">
                             <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
                         </div>
@@ -201,7 +194,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 mb-2 mb-lg-0">
-                    <p class="text-center text-lg-left">©About our store</p>
+                    <p class="text-center text-lg-left">©Copyright</p>
                 </div>
                 <div class="col-lg-6">
                     <p class="text-center text-lg-right">Cosmetic store </p>

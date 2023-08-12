@@ -87,10 +87,9 @@
                             <div class="social text-center">
                                 <h4>Show it to your friends</h4>
                                 <p>
-                                    <a href="#" class="external facebook"><i class="fa fa-facebook"></i></a>
-                                    <a href="#" class="external gplus"><i class="fa fa-google-plus"></i></a>
-                                    <a href="#" class="external twitter"><i class="fa fa-twitter"></i></a>
-                                    <a href="#" class="email"><i class="fa fa-envelope"></i></a>
+                                    <a href="https://www.facebook.com/" class="external facebook"><i class="fa fa-facebook"></i></a>
+                                    <a href="https://www.instagram.com/" class="external gplus"><i class="fa fa-instagram"></i></a>
+                                    
                                 </p>
                             </div>
                         </div>
