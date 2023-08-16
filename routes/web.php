@@ -169,6 +169,7 @@ Route::middleware('auth','isadmin')->group(function () {
 
     //dashboard
     Route::get('/dashboard',[DashboardController::class,'dashboard'])->name('dashboard');
+    Route::post('/dashboard/changemonth',[DashboardController::class,'changemonth'])->name('changemonth');
 
     
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

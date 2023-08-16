@@ -43,39 +43,11 @@
                           <input name="phone" id="phone" type="text" placeholder="Enter Your Phone Number" class="form-control" value="{{auth()->user()->phone}}">
                         </div>
                       </div>
-                      <!-- <div class="col-md-6">
-                        <div class="form-group">
-                          <label for="street">Street</label>
-                          <input id="street" type="text" class="form-control">
-                        </div>
-                      </div> -->
+                      
                     </div>
                     <!-- /.row-->
                     <div class="row">
-                      <!-- <div class="col-md-6 col-lg-3">
-                        <div class="form-group">
-                          <label for="city">Company</label>
-                          <input id="city" type="text" class="form-control">
-                        </div>
-                      </div> -->
-                      <!-- <div class="col-md-6 col-lg-3">
-                        <div class="form-group">
-                          <label for="zip">ZIP</label>
-                          <input id="zip" type="text" class="form-control">
-                        </div>
-                      </div> -->
-                      <!-- <div class="col-md-6 col-lg-3">
-                        <div class="form-group">
-                          <label for="state">State</label>
-                          <select id="state" class="form-control"></select>
-                        </div>
-                      </div> -->
-                      <!-- <div class="col-md-6 col-lg-3">
-                        <div class="form-group">
-                          <label for="country">Country</label>
-                          <select id="country" class="form-control"></select>
-                        </div>
-                      </div> -->
+                    
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="payment_method">Payment Method </label>
@@ -85,16 +57,11 @@
                           </select>
                         </div>
                       </div>
-                      <!-- <div class="col-md-6">
-                        <div class="form-group">
-                          <label for="email">Email</label>
-                          <input id="email" type="text" class="form-control">
-                        </div>
-                      </div> -->
+                      
                     </div>
                     <!-- /.row-->
                   </div>
-                  <div class="box-footer d-flex justify-content-between"><a href="{{route('cart.index')}}" class="btn btn-outline-secondary"><i class="fa fa-chevron-left"></i>Back to Basket</a>
+                  <div class="box-footer d-flex justify-content-between"><a href="{{route('cart.index')}}" class="btn btn-outline-secondary"><i class="fa fa-chevron-left"></i>Back to Cart</a>
                     <button type="button" onclick="submitdata()" class="btn btn-primary">Order Now<i class="fa fa-chevron-right"></i></button>
                   </div>
                 </form>

@@ -55,9 +55,7 @@
     <!-- Favicon-->
     <link rel="shortcut icon" href="{{ asset('frontend/img/favicon.png') }}">
     <!-- Tweaks for older IEs-->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+   
 
 
         
@@ -94,42 +92,13 @@
                     <li class="list-inline-item"><a href="{{route('frontend.userlogin')}}">Login</a></li>
                     <li class="list-inline-item"><a href="{{route('frontend.register')}}">Register</a></li>
                 @endif
-                <!-- <li class="list-inline-item"><a href="#">Recently viewed</a></li> -->
+                
             </ul>
         </div>
     </div>
 </div>
 
-            <!-- <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true"
-                class="modal fade">
-                <div class="modal-dialog modal-sm">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Customer login</h5>
-                            <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span
-                                    aria-hidden="true">×</span></button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="{{route('login')}}" method="POST">
-                                <div class="form-group">
-                                    <input id="email" type="email" placeholder="email" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <input id="password" type="password" placeholder="password"
-                                        class="form-control">
-                                </div>
-                                <p class="text-center">
-                                    <button class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>
-                                </p>
-                            </form>
-                            <p class="text-center text-muted">Not registered yet?</p>
-                            <p class="text-center text-muted"><a
-                                    href="{{ route('frontend.register') }}"><strong>Register now</strong></a>! It is
-                                easy and done in 1 minute and gives you access to special discounts and much more!</p>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
+           
             <!-- *** TOP BAR END ***-->
             
 
@@ -198,9 +167,7 @@
                 </div>
                 <div class="col-lg-6">
                     <p class="text-center text-lg-right">Cosmetic store </p>
-                    <!-- <a -->
-                            <!-- href="https://bootstrapious.com/">Bootstrapious</a> -->
-                        <!-- If you want to remove this backlink, pls purchase an Attribution-free License @ https://bootstrapious.com/p/obaju-e-commerce-template. Big thanks!-->
+                    
                     
                 </div>
             </div>
